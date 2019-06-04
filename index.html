@@ -7,23 +7,41 @@
         <script src="vendors/processing.min.js"></script>
     </head>
     <body>
-        <h1>Processing project by Antonio</h1>
+        <h1>Processing project by MartinaCocco </h1>
         <script type="text/processing">
 
             // Write your project here
             
-            // Example
-            void setup() {
-              size(200, 200);
-              background(255);
-            }
-            void draw(){
-                pushMatrix();
-                translate(100, 100);
-                rotate(radians(frameCount * 2  % 360));
-                rect(0, 0, 80, 5);
-                popMatrix();
-            }
+            float planetAngle = 0;
+
+void setup() {
+  size(300, 270);
+}
+
+void draw() {
+  background(0);
+  
+   // disegno della traiettoria-ellisse del pianeta
+ fill(0, 0, 0, 100);  
+ stroke(255);
+ ellipse(150, 130, 200, 210);
+
+  // disegno del sole al centro 
+  translate(width/2, height/2);
+  fill(250, 236, 164);
+  ellipse(0, 0, 70, 70);
+  
+  // pianeta che gira attorno al sole
+  pushMatrix();
+  rotate(planetAngle); 
+  translate(100, 0);
+  fill(215, 236, 237);
+  ellipse(0, 0, 20, 20);
+
+  popMatrix();
+
+  planetAngle += 0.01;
+}
             
         </script>
         <canvas></canvas>
